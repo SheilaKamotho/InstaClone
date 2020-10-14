@@ -1,3 +1,4 @@
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,21 @@
     {% else %}
       <title>Instagram</title>
     {% endif %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+    {% endblock %}
+
 </head>
 <body>
     {% block content %}
-      <h6>Bringing you closer to the people and things you love</h6>
-    {%endblock%}
+      <h6 class="text-center">Bringing you closer to the people and things you love</h6>
+    {% endblock %}
+      {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      {% bootstrap_javascript %}
+
+    {% endblock %}
     
 </body>
 </html>
