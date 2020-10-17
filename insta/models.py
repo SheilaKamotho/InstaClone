@@ -19,3 +19,11 @@ class Image(models.Model):
     comments = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def save_image(self):
+        self.save()
+
+    @classmethod
+    def save_image(cls):
+        photos=cls.objects.filter()
+        return photos
