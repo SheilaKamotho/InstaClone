@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 
 # Create your models here.
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profile/', null=True)
-    bio = models.TextField()
+    bio = models.TextField(null=True)
+
+    def save_profile(self):
+        self.save()
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'image/', null=True)
