@@ -25,5 +25,5 @@ class Image(models.Model):
 
     @classmethod
     def save_image(cls):
-        photos=cls.objects.filter()
-        return photos
+        images=cls.objects.save()
+        return images

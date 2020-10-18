@@ -2,5 +2,8 @@
 
 {% block content %}
 {{block.super}}
-<h6 class="text-center">I am going to ace this IP!</h6>
+{% for images_item in images %}
+<p>{{ images_item.caption }}</p>
+
+{% endfor %}
 {% endblock %}
