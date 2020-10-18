@@ -2,8 +2,31 @@
 
 {% block content %}
 {{block.super}}
-{% for images_item in images %}
-<p>{{ images_item.caption }}</p>
+{% for posts_item in posts %}
+{%for photos_item in photos%} 
+<div class="container">
+    <div class="row" style="padding-left: 100px;">
+        <div class="col-md-7, col-lg-7, col-sm-7" style="background-color: white;">
+            <div class="card">
+                <div class="card_header">
+                    <div class="profile" style="padding-bottom: 10px; padding-top: 10px;"><img style="width: 50px; height: 50px; border-radius: 50px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px;">{{posts_item.name}}</strong></div>
+                </div>
+              
+                <div class="card_body">
+                    <div class="post">
+                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}">
+                        <p>Likes:{{photos_item.likes}}</p>
+                        <p>{{photos_item.caption}}</p>
+                        <p style="color: grey;">{{photos_item.pub_date}}</p>
+                        <strong>Comments</strong>
+                        <p>{{photos_item.comments}}</p>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endfor %}
+{% endfor %} 
 {% endblock %}
