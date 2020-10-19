@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profile/', null=True)
     name = models.CharField(max_length = 60, null=True)
+    editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)
 
     def save_profile(self):
