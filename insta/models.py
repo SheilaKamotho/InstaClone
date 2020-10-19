@@ -17,6 +17,12 @@ class Profile(models.Model):
         posts=cls.objects.filter()
         return posts
 
+    def update_profile(self):
+        self.update()
+
+    def delete_profile():
+        self.delete()
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'image/', null=True)
     name = models.CharField(max_length = 60)
@@ -39,3 +45,13 @@ class Image(models.Model):
     def search_by_name(cls,search_term):
         photos = cls.objects.filter(name__icontains=search_term)
         return photos
+    
+    def update_profile(self):
+        self.update()
+
+    def delete_profile():
+        self.delete()
+  
+
+        
+    

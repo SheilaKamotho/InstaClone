@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Image
 from .forms import NewImageForm
@@ -31,7 +31,7 @@ def new_image(request):
     current_user = request.user
     if request.method == 'POST':
         form = NewImageForm(request.POST, request.FILES)
-        if form.is_valid():
+        if forms.is_valid():
             image = form.save(commit=False)
             image.editor = current_user
             image.save()
