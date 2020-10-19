@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+{% for posts_item in posts %}
+<div class="container">
+    <div class="profile" style="padding-bottom: 10px; padding-top: 10px; padding-left: 10px; background-color: white;">
+        <img style="width: 100px; height: 100px; border-radius: 100px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px; font-size: 40px;">{{posts_item.name}}</strong>
+        <p><strong>Bio</strong></p>
+        <p>{{posts_item.bio}}</p>
+    </div>
+</div>
+{% endfor %} 
+<div class="container">
+    <div class="row">
+{% for photos_item in photos %}
+      <div class="col-md-3">
+        <a  href= "{% url 'photos' %}">
+            <img style="width: 300px;height: 300px; padding-right: 20px;" src="{{photos_item.image.url}}" alt="Image">
+        </a>
+      </div>
+{% endfor %} 
+{% endblock %}

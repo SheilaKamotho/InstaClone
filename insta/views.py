@@ -41,6 +41,11 @@ def new_image(request):
             form = NewImageForm()
         return render(request, 'new_image.html', {"form":form})
 
+def profile(request):
+    posts=Profile.save_profile()
+    photos=Image.save_image()
+    return render(request, 'profile.html',{"photos":photos, "posts":posts})
+
 
 
 

@@ -11,34 +11,16 @@
         <div class="navbar-header">
           <a class="navbar-brand" href= "{% url 'photos' %}" style="color: black;">Instagram</a>
         </div>
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-6 col-md-6" style="float:right; margin-top: 15px;">
           {% if user.is_authenticated %}
-          <ul>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                        <span class="caret"></span>
-                    </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="{% url 'photos' %}">Home</a>
-                </li>
-                <li>
-                  <a href="{%url 'new-image'%}">Create Post</a>
-                </li>
-                <li>
-                  <a href="/accounts/password/change">Change Password</a>
-                </li>
-                <li>
-                  <a href="/logout">Logout</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <a href= "{% url 'photos' %}" style="color: black; padding-right: 20px;"><i class="glyphicon glyphicon-home"></i></a>
+          <a href="{%url 'new-image'%}"><i style="color: black; padding-right: 20px;" class="glyphicon glyphicon-plus"></i></a>
+          {% for posts_item in posts %}
+          <a href="{% url 'profile' %}"><img style="width: 30px; height: 30px; border-radius: 30px;" src="{{posts_item.profile_photo.url}}"></a>
+          {%endfor%}
+          <a style="color: black; padding-left: 20px;" href="/logout"><i class="glyphicon glyphicon-log-out"></i></a>
           {% else %}
-          <li>
-            <a class='btn btn-default' href="/accounts/login">Login</a>
-          </li>
-
+          <a class='btn btn-default' href="/accounts/login">Login</a>
           {% endif %}
          
         </div>
