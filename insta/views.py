@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Image
-from .forms import NewImageForm,NewProfileForm
+from .forms import NewImageForm,NewProfileForm,NewCommentForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -40,6 +40,21 @@ def new_image(request):
     else:
         form = NewImageForm()
     return render(request, 'new_image.html', {"form":form, "current_user":current_user})
+
+def new_comment(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewCommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.editor = current_user
+            image.save()
+        return redirect('photos')
+        
+    else:
+        form = NewCommentForm()
+    return render(request, 'new_comment.html', {"form":form, "current_user":current_user})
+
 
 def new_profile(request):
     current_user = request.user

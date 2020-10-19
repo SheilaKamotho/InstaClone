@@ -12,3 +12,8 @@ class NewProfileForm(forms.ModelForm):
         model = Profile
         exclude = ['editor']
         
+
+class NewCommentForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['editor','pub_date', 'likes','profile','image','caption']
