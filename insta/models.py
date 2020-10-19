@@ -46,10 +46,10 @@ class Image(models.Model):
         photos = cls.objects.filter(name__icontains=search_term)
         return photos
     
-    def update_profile(self):
+    def update_image(self):
         self.update()
 
-    def delete_profile():
+    def delete_image():
         self.delete()
   
 
