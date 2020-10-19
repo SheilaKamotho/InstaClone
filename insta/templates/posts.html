@@ -14,8 +14,11 @@
               
                 <div class="card_body">
                     <div class="post">
-                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}">
-                        <p>Likes:{{photos_item.likes}}</p>
+                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}"><br>
+                        <div style="float: right;">
+                            <a href="{{photos_item.image.url}}"download="{{ photos_item.name}}" class="btn btn-secondary">Save</a>
+                           <a href="">Like</a> 
+                        </div><br>
                         <p>{{photos_item.caption}}</p>
                         <p style="color: grey;">{{photos_item.pub_date}}</p>
                         <strong>Comments</strong>
