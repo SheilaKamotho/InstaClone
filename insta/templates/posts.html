@@ -14,10 +14,11 @@
               
                 <div class="card_body">
                     <div class="post">
-                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}"><br>
-                        <div style="float: right;">
-                            <a href="{{photos_item.image.url}}"download="{{ photos_item.name}}" class="btn btn-secondary">Save</a>
-                           <a href="">Like</a> 
+                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}">
+                        <div>
+                           <a href=""><i style="color: black;" class="glyphicon glyphicon-heart-empty">{{photos_item.likes}}</i></a> 
+                           <a href=""><i style="color: black; padding-left: 10px;" class="glyphicon glyphicon-comment"></i></a> 
+                           <a href="{{photos_item.image.url}}"download="{{ photos_item.name}}" class="btn btn-secondary"><i style="color: black;" class="glyphicon glyphicon-send"></i></a>
                         </div><br>
                         <p>{{photos_item.caption}}</p>
                         <p style="color: grey;">{{photos_item.pub_date}}</p>
