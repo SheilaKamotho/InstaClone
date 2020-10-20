@@ -5,7 +5,7 @@ from .models import Image,Profile, Comment
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['editor','pub_date', 'likes','comment','profile','name']
+        exclude = ['editor','pub_date', 'likes','comment','profile']
         
 class NewProfileForm(forms.ModelForm):
     class Meta:
