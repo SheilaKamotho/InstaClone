@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profile/', null=True)
-    name = models.CharField(max_length = 60, null=True)
     editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     bio = models.TextField(null=True)
 
@@ -24,27 +23,12 @@ class Profile(models.Model):
     def delete_profile():
         self.delete()
 
-class Comment(models.Model):
-    comments = models.TextField()
-    editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
-
-    def save_comment(self):
-        self.save()
-
-    @classmethod
-    def save_comment(cls):
-        comments=cls.objects.filter()
-        return comments
-
-
-
 class Image(models.Model):
     image = models.ImageField(upload_to = 'image/', null=True)
     name = models.CharField(max_length = 60)
     caption = models.TextField(null=True)
     likes = models.IntegerField(null=True)
     editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
-    comments = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -67,7 +51,18 @@ class Image(models.Model):
     def delete_image():
         self.delete()
 
+class Comment(models.Model):
+    comment = models.TextField()
+    editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    image1 = models.ForeignKey(Image,on_delete=models.CASCADE, null=True)
 
+    def save_comment(self):
+        self.save()
+
+    @classmethod
+    def save_comment(cls):
+        comment=cls.objects.filter()
+        return comment
   
 
         

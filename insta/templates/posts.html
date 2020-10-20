@@ -3,18 +3,18 @@
 {% block content %}
 {{block.super}}
 {% for posts_item in posts %}
-{%for photos_item in photos%} 
+{%for photos_item in all_images %} 
 <div class="container">
     <div class="row" style="padding-left: 100px;">
         <div class="col-md-7, col-lg-7, col-sm-7" style="background-color: white;">
             <div class="card">
                 <div class="card_header">
-                    <div class="profile" style="padding-bottom: 10px; padding-top: 10px;"><img style="width: 50px; height: 50px; border-radius: 50px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px;">{{posts_item.name}}</strong></div>
+                    <div class="profile" style="padding-bottom: 10px; padding-top: 10px;"><img style="width: 50px; height: 50px; border-radius: 50px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px;">{{photos_item.name}}</strong></div>
                 </div>
               
                 <div class="card_body">
                     <div class="post">
-                        <img style="width: 595px; height: 360px;" src="{{photos_item.image.url}}">
+                        <img class="col-md-7" style="width: 595px; height: 360px;" src="{{photos_item.image.url}}">
                         <div>
                            <a href=""><i style="color: black; touch-action:manipulation;" class="glyphicon glyphicon-heart-empty">{{photos_item.likes}}</i></a> 
                            <a  href="{%url 'new_comment'%}"><i style="color: black; padding-left: 10px;" class="glyphicon glyphicon-comment"></i></a> 
@@ -23,7 +23,11 @@
                         <p>{{photos_item.caption}}</p>
                         <p style="color: grey;">{{photos_item.pub_date}}</p>
                         <strong>Comments</strong>
-                        <p>{{photos_item.comments}}</p>   
+                        {% for comment in comment%}
+                        {%if photos_item.id == comment.photos_item.id%}
+                        <p>{{comment.comment}}</p>  
+                        {%endif%}
+                        {%endfor%}  
                     </div>
                 </div>
             </div>

@@ -4,15 +4,20 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Image
+from .models import Profile, Image, Comment
 from .forms import NewImageForm,NewProfileForm,NewCommentForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def photos(request):
+    all_images = Image.objects.all()
     posts=Profile.save_profile()
-    photos=Image.save_image()
-    return render(request, 'posts.html',{"photos":photos, "posts":posts})
+    # photos=Image.save_image()
+    comment=Comment.save_comment()
+    comment = Comment.objects.all()
+    # test = dir(all_images)
+    # print(test)
+    return render(request, 'posts.html',{"all_images":all_images, "posts":posts, "comment":comment})
 
 def search_results(request):
 
@@ -46,9 +51,9 @@ def new_comment(request):
     if request.method == 'POST':
         form = NewCommentForm(request.POST, request.FILES)
         if form.is_valid():
-            image = form.save(commit=False)
-            image.editor = current_user
-            image.save()
+            comment = form.save(commit=False)
+            comment.editor = current_user
+            comment.save()
         return redirect('photos')
         
     else:

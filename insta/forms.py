@@ -1,11 +1,11 @@
 from django import forms
-from .models import Image,Profile
+from .models import Image,Profile, Comment
 
 
 class NewImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['editor','pub_date', 'likes','comments','profile']
+        exclude = ['editor','pub_date', 'likes','comment','profile']
         
 class NewProfileForm(forms.ModelForm):
     class Meta:
@@ -15,5 +15,5 @@ class NewProfileForm(forms.ModelForm):
 
 class NewCommentForm(forms.ModelForm):
     class Meta:
-        model = Image
-        exclude = ['editor','pub_date', 'likes','profile','image','caption']
+        model = Comment
+        exclude = ['editor']
