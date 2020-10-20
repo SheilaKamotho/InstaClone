@@ -16,9 +16,8 @@
         {% for image in images %}
         <div class="col-sm-6 col-md-3" style="background-color: white;">
             <p>{{image.name}}</p>
-            <img style="width: 600px;height: 300px;" src="{{image.image.url}}" class="img-responsive" alt="Image">
+            <a href="{%url 'photos'%}"><img style="width: 600px;height: 300px;" src="{{image.image.url}}" class="img-responsive" alt="Image"></a>
             <p>{{image.caption}}</p>
-            <p>{{image.likes}}</p>
             <p>{{image.comments}}</p>
         </div>
         {% endfor %}
