@@ -2,7 +2,9 @@
 
 {% block content %}
 {{block.super}}
-{% for posts_item in posts %}
+<!-- looping through profile model
+{% for posts_item in posts %} -->
+<!-- looping through image model --> 
 {%for photos_item in all_images %} 
 <div class="container">
     <div class="row" style="padding-left: 100px;">
@@ -24,9 +26,7 @@
                         <p style="color: grey;">{{photos_item.pub_date}}</p>
                         <strong>Comments</strong>
                         {% for comment in comment%}
-                        {%if photos_item.id == comment.photos_item.id%}
-                        <p>{{comment.comment}}</p>  
-                        {%endif%}
+                        <p>{{comment.comment}}</p>                       
                         {%endfor%}  
                     </div>
                 </div>
@@ -35,5 +35,5 @@
     </div>  
 </div>
 {% endfor %}
-{% endfor %} 
+<!-- {% endfor %}  -->
 {% endblock %}

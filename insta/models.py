@@ -23,6 +23,18 @@ class Profile(models.Model):
     def delete_profile():
         self.delete()
 
+class Comment(models.Model):
+    comment = models.TextField()
+    editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    
+    def save_comment(self):
+        self.save()
+
+    @classmethod
+    def save_comment(cls):
+        comment=cls.objects.filter()
+        return comment
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'image/', null=True)
     name = models.CharField(max_length = 60)
@@ -30,6 +42,7 @@ class Image(models.Model):
     likes = models.IntegerField(null=True)
     editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def save_image(self):
@@ -51,18 +64,7 @@ class Image(models.Model):
     def delete_image():
         self.delete()
 
-class Comment(models.Model):
-    comment = models.TextField()
-    editor = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
-    image1 = models.ForeignKey(Image,on_delete=models.CASCADE, null=True)
 
-    def save_comment(self):
-        self.save()
-
-    @classmethod
-    def save_comment(cls):
-        comment=cls.objects.filter()
-        return comment
   
 
         

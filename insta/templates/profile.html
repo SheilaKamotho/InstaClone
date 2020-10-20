@@ -5,7 +5,7 @@
 {% for posts_item in posts %}
 <div class="container">
     <div class="profile" style="padding-bottom: 10px; padding-top: 10px; padding-left: 10px; background-color: white;">
-        <img style="width: 100px; height: 100px; border-radius: 100px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px; font-size: 40px;">{{posts_item.name}}</strong>
+        <img style="width: 100px; height: 100px; border-radius: 100px;" src="{{posts_item.profile_photo.url}}"><strong style="padding-left: 10px; font-size: 40px;">{{photos_item.name}}</strong>
         <p><strong>Bio</strong></p>
         <p>{{posts_item.bio}}</p>
         <a href="{%url 'new_profile'%}"><i style="color: black; padding-right: 20px;" class="glyphicon glyphicon-pencil">Edit</i></a>

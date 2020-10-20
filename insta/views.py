@@ -11,7 +11,7 @@ from .forms import NewImageForm,NewProfileForm,NewCommentForm
 @login_required(login_url='/accounts/login/')
 def photos(request):
     all_images = Image.objects.all()
-    posts=Profile.save_profile()
+    posts=Profile.objects.all()
     # photos=Image.save_image()
     comment=Comment.save_comment()
     comment = Comment.objects.all()
